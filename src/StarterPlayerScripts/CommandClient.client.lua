@@ -2,7 +2,7 @@
 --[=[
     Copyright (c) 2026 Roblox Chat Launcher Developers & Contributors <https://github.com/RobloxChatLauncher>
 
-    Source: https://github.com/RobloxChatLauncher/RobloxChatLauncher/blob/main/integrations/
+    Source: https://github.com/RobloxChatLauncher/RobloxChatLauncher-Integrations/blob/main/integrations/
     
     Licensed under the MPL 2.0 license.
     See https://www.mozilla.org/en-US/MPL/2.0/ for full text.
@@ -10,6 +10,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 
+local Version = require(ReplicatedStorage.Version)
 local Enums = require(ReplicatedStorage.Enums)
 local BridgeEvent = ReplicatedStorage:WaitForChild("RCL_Event", 10)
 if not BridgeEvent then
@@ -18,7 +19,10 @@ if not BridgeEvent then
 end
 local LocalPlayer = Players.LocalPlayer
 
-print(string.format("[RCL::Client] Initialized Roblox Chat Launcher Integrations v%s (RobloxChatLauncher/RobloxChatLauncher)", Enums.Version))
+print(string.format(
+    "[RCL::Client] Initialized Roblox Chat Launcher Integrations %s",
+    Version.Tag
+))
 
 -------------------------------
 -- 3. Command Handler Map
