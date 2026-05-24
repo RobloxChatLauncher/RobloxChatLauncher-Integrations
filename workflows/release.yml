@@ -113,6 +113,28 @@ jobs:
       # ---------------------------
       # Build & validate integrations
       # ---------------------------
+      - name: Update Version.lua
+        working-directory: ./src/ReplicatedStorage
+        shell: pwsh
+        run: |
+          $tag = "${{ needs.validate-tag.outputs.clean_tag }}"
+
+          $path = "Version.lua"
+          $content = Get-Content $path
+
+          # Check if the line exists before trying to change it
+          if (-not ($content -match "^Tag =")) {
+              Write-Error "Couldn't find 'Tag =' in $path."
+              exit 1
+          }
+
+          # Perform the replacement and force UTF8
+          $content = $content `
+            -replace '(?m)^(\s*Tag\s*=\s*)"[^"]*"', "`$1`"$tag`""
+          Set-Content $path $content -Encoding UTF8
+
+          Write-Host "Successfully updated Version.Tag to $tag in $path."
+
       - name: Build Integrations with Rojo
         working-directory: .
         shell: pwsh

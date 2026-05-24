@@ -7,22 +7,8 @@
     Licensed under the MPL 2.0 license.
     See https://www.mozilla.org/en-US/MPL/2.0/ for full text.
 --]=]
-local function CreateEnum(name, items)
-    local enum = {}
-    for _, value in ipairs(items) do
-        enum[value] = value
-    end
-    return table.freeze(enum)
-end
-
-local Enums = {
-    CommandType = CreateEnum("CommandType", {
-        "Emote"
-    }),
-    
-    Target = CreateEnum("Target", {
-        "Server"
-    })
+local Version = {
+    Tag = "__DEV__" -- Do not manually update this version; it is auto-updated by release workflow
 }
 
-return table.freeze(Enums)
+return table.freeze(Version)
