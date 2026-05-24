@@ -123,7 +123,7 @@ jobs:
           $content = Get-Content $path
 
           # Check if the line exists before trying to change it
-          if (-not ($content -match "^Tag =")) {
+          if (-not ($content -match "^\s*Tag =")) {
               Write-Error "Couldn't find 'Tag =' in $path."
               exit 1
           }
