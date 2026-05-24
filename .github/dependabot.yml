@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # 1. GitHub Actions (Workflows in .github/workflows)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
