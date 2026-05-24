@@ -1,0 +1,23 @@
+name: Dispatch Submodule Update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch Workflow
+        uses: actions/github-script@v9 
+        with:
+ 
+          github-token: ${{ secrets.SUBMODULE_DISPATCH }} 
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'RobloxChatLauncher', 
+              repo: 'RobloxChatLauncher', 
+              workflow_id: 'bump-integrations-submodule.yml', 
+              ref: 'main' 
+            });
