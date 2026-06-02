@@ -1,6 +1,18 @@
 <p align="center">
-    <img src="https://github.com/RobloxChatLauncher/RobloxChatLauncher/raw/main/assets/brand/rcl_integrations_logo_dark.webp#gh-dark-mode-only" width="700">
-    <img src="https://github.com/RobloxChatLauncher/RobloxChatLauncher/raw/main/assets/brand/rcl_integrations_logo_light.webp#gh-light-mode-only" width="700">
+    <a href="https://RobloxChatLauncher.onrender.com/creators/">
+        <picture>
+            <source
+                media="(prefers-color-scheme: dark)"
+                srcset="https://github.com/RobloxChatLauncher/RobloxChatLauncher/raw/main/assets/brand/rcl_integrations_logo_dark.webp">
+            <source
+                media="(prefers-color-scheme: light)"
+                srcset="https://github.com/RobloxChatLauncher/RobloxChatLauncher/raw/main/assets/brand/rcl_integrations_logo_light.webp">
+            <img
+                src="https://github.com/RobloxChatLauncher/RobloxChatLauncher/raw/main/assets/brand/rcl_integrations_logo_light.webp"
+                width="700"
+                alt="Integrations">
+        </picture>
+    </a>
 </p>
 
 <!--
@@ -29,7 +41,7 @@ Integrate these scripts into your Roblox Experience to enable Roblox Chat Launch
 
 ## 🛠 Installation
 
-Download the latest `RobloxChatLauncherIntegrations.rbxmx` from GitHub Releases and import it directly into Roblox Studio. The package automatically includes ReplicatedStorage, ServerScriptService, StarterPlayerScripts, and RCL_Event.
+Download the latest `RobloxChatLauncherIntegrations.rbxmx` from [GitHub Releases](https://github.com/RobloxChatLauncher/RobloxChatLauncher-Integrations/releases) and import it directly into Roblox Studio. The package automatically includes ReplicatedStorage, ServerScriptService, StarterPlayerScripts, and RCL_Event.
 
 ## 🔐 Getting Your API Key
 
@@ -42,13 +54,9 @@ You can generate an API key instantly by verifying ownership of your game. For g
 > [!IMPORTANT]
 > By default, your Universe's registration status is NOT shown in public API search results for privacy reasons.
 >
-> You must make a PATCH request to `/api/v1/universe/settings` with `"isUnlisted": false` in the body if you want it to appear as registered in API search results or public listings:
+> If you want your game to appear as registered in public listings, you can change your visibility by switching `isUnlisted` to `false` via [Swagger UI](https://robloxchatlauncher.onrender.com/api-docs/#/Universe/patch_api_v1_universe_settings).
 >
-> ```powershell
-> Invoke-RestMethod -Uri "https://RobloxChatLauncher.onrender.com/api/v1/universe/settings" -Method Patch -Headers @{"x-universe-id"="YOUR_ID"; "x-api-key"="YOUR_KEY"} -ContentType "application/json" -Body '{"isUnlisted": false}'`
-> ```
->
-> This setting only controls API search and directory visibility and does not limit who can use integrations functionality in your game.
+> This setting only controls API search and directory visibility (including the Integrations enabled message when joining a Roblox game) and does not limit who can use integrations functionality in your game.
 
 ## ⚠️ Warnings & Considerations
 
