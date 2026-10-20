@@ -24,7 +24,7 @@
 <div align="center">
   
 [![License](https://img.shields.io/badge/license-MPL%202.0-brightgreen)](LICENSE)
-[![Lua](https://img.shields.io/badge/Lua-%232C2D72.svg?logo=lua&logoColor=white)](#)
+[![TypeScript](https://img.shields.io/badge/TypeScript-%233178C6.svg?logo=typescript&logoColor=white)](#)
 [![e dance](https://img.shields.io/badge//e-dance-blue)](#)
 
 </div>
@@ -42,6 +42,18 @@ Integrate these scripts into your Roblox Experience to enable Roblox Chat Launch
 ## 🛠 Installation
 
 Download the latest `RobloxChatLauncherIntegrations.rbxmx` from [GitHub Releases](https://github.com/RobloxChatLauncher/RobloxChatLauncher-Integrations/releases) and import it directly into Roblox Studio. The package automatically includes ReplicatedStorage, ServerScriptService, StarterPlayerScripts, and RCL_Event.
+
+### Building from source
+
+The integrations are written in TypeScript and compiled to Luau with [roblox-ts](https://roblox-ts.com/), then packaged with [Rojo](https://rojo.space/) 7.6.1:
+
+```sh
+npm ci
+npx rbxtsc
+rojo build RobloxChatLauncher.project.json --output RobloxChatLauncherIntegrations.rbxmx
+```
+
+`default.project.json` maps the same files onto a place (`rojo serve`) and is what `rbxtsc` reads to resolve imports through `game:GetService`.
 
 ## 🔐 Getting Your API Key
 

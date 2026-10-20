@@ -87,3 +87,7 @@ Strings.*.Designer.cs
 
 # Generated changelog from the conventional-changelog package
 /CHANGELOG.md
+
+# roblox-ts output (compiled Luau and its runtime library)
+/out
+/include
