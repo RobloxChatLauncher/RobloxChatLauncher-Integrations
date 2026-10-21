@@ -8,7 +8,7 @@
 */
 // Import our Bridge and Enums
 import * as HttpBridge from "ReplicatedStorage/HttpBridge";
-import * as Enums from "ReplicatedStorage/Enums";
+import Enums from "ReplicatedStorage/Enums";
 
 const Players = game.GetService("Players");
 const ReplicatedStorage = game.GetService("ReplicatedStorage");
@@ -17,7 +17,9 @@ const ReplicatedStorage = game.GetService("ReplicatedStorage");
 const BridgeEvent = ReplicatedStorage.WaitForChild("RCL_Event") as RemoteEvent;
 
 interface CommandPayload {
-    type: string;
+    // A CommandType, not `string`, so `!payload.type` compiles to a plain Lua `not` (no `""` check).
+    // Unknown types still get through and the client warns about them.
+    type: (typeof Enums.CommandType)[keyof typeof Enums.CommandType];
     targetPlayer?: unknown;
     data?: unknown;
 }
@@ -69,13 +71,12 @@ function handleIncomingRequest(input: unknown) {
     // If it's already an array, use it as is.
     const commands = (input as unknown[])[0] !== undefined ? (input as unknown[]) : [input];
 
-    for (const entry of commands) {
+    for (const payload of commands as CommandPayload[]) {
         // Now we are guaranteed to be looking at individual command objects
-        if (!typeIs(entry, "table") || (entry as CommandPayload).type === undefined) {
+        if (type(payload) !== "table" || !payload.type) {
             warn("[RCL::Ingress] Skipping malformed payload entry");
             continue;
         }
-        const payload = entry as CommandPayload;
 
         const target = payload.targetPlayer;
 

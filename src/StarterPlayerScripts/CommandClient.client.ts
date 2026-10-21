@@ -7,7 +7,7 @@
     See https://www.mozilla.org/en-US/MPL/2.0/ for full text.
 */
 import * as Version from "ReplicatedStorage/Version";
-import * as Enums from "ReplicatedStorage/Enums";
+import Enums from "ReplicatedStorage/Enums";
 
 const ReplicatedStorage = game.GetService("ReplicatedStorage");
 const Players = game.GetService("Players");

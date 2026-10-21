@@ -6,10 +6,12 @@
     Licensed under the MPL 2.0 license.
     See https://www.mozilla.org/en-US/MPL/2.0/ for full text.
 */
-export const CommandType = table.freeze({
-    Emote: "Emote",
-} as const);
+export = table.freeze({
+    CommandType: table.freeze({
+        Emote: "Emote",
+    } as const),
 
-export const Target = table.freeze({
-    Server: "Server",
-} as const);
+    Target: table.freeze({
+        Server: "Server",
+    } as const),
+});
