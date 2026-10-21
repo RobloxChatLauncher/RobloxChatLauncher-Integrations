@@ -5,19 +5,23 @@
 
         "ReplicatedStorage": {
             "$className": "Folder",
-            "$path": "src/ReplicatedStorage"
+            "$path": "out/ReplicatedStorage",
+
+            "rbxts_include": {
+                "$path": "include"
+            }
         },
 
         "ServerScriptService": {
             "$className": "Folder",
-            "$path": "src/ServerScriptService"
+            "$path": "out/ServerScriptService"
         },
 
         "StarterPlayer": {
             "$className": "Folder",
             "StarterPlayerScripts": {
                 "$className": "Folder",
-                "$path": "src/StarterPlayerScripts"
+                "$path": "out/StarterPlayerScripts"
             }
         }
     }

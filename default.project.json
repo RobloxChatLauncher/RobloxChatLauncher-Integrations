@@ -1,0 +1,28 @@
+{
+    "name": "RobloxChatLauncher",
+    "tree": {
+        "$className": "DataModel",
+
+        "ReplicatedStorage": {
+            "$className": "ReplicatedStorage",
+            "$path": "out/ReplicatedStorage",
+
+            "rbxts_include": {
+                "$path": "include"
+            }
+        },
+
+        "ServerScriptService": {
+            "$className": "ServerScriptService",
+            "$path": "out/ServerScriptService"
+        },
+
+        "StarterPlayer": {
+            "$className": "StarterPlayer",
+            "StarterPlayerScripts": {
+                "$className": "StarterPlayerScripts",
+                "$path": "out/StarterPlayerScripts"
+            }
+        }
+    }
+}

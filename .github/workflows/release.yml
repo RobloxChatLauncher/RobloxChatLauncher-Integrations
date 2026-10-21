@@ -113,27 +113,34 @@ jobs:
       # ---------------------------
       # Build & validate integrations
       # ---------------------------
-      - name: Update Version.lua
+      - name: Update Version.ts
         working-directory: ./src/ReplicatedStorage
         shell: pwsh
         run: |
           $tag = "${{ needs.validate-tag.outputs.clean_tag }}"
 
-          $path = "Version.lua"
+          $path = "Version.ts"
           $content = Get-Content $path
 
           # Check if the line exists before trying to change it
-          if (-not ($content -match "^\s*Tag =")) {
-              Write-Error "Couldn't find 'Tag =' in $path."
+          if (-not ($content -match "^\s*export const Tag =")) {
+              Write-Error "Couldn't find 'export const Tag =' in $path."
               exit 1
           }
 
           # Perform the replacement and force UTF8
           $content = $content `
-            -replace '(?m)^(\s*Tag\s*=\s*)"[^"]*"', "`$1`"$tag`""
+            -replace '(?m)^(\s*export const Tag\s*=\s*)"[^"]*"', "`$1`"$tag`""
           Set-Content $path $content -Encoding UTF8
 
           Write-Host "Successfully updated Version.Tag to $tag in $path."
+
+      - name: Compile TypeScript with roblox-ts
+        working-directory: .
+        shell: pwsh
+        run: |
+          npm ci
+          npx rbxtsc
 
       - name: Build Integrations with Rojo
         working-directory: .
